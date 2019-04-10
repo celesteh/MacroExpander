@@ -1,4 +1,4 @@
-TITLE:: MacroReplacer
+TITLE:: MacroExpander
 summary:: Allows for Macro expansion in a Document in SuperCollider
 categories:: Live Coding
 related:: Classes/Document, Classes/ScIDE, Guides/SCIde
@@ -18,8 +18,8 @@ The title to use if a new instance of Document is created.
 
 discussion::
 code::
-MacroReplacer(Document.current); // cut and paste to a Document or
-MacroReplacer.new;
+MacroExpander(Document.current); // cut and paste to a Document or
+MacroExpander.new;
 ::
 Because this is intended for LiveCoding, it is tolerant of arguments being in the wrong oder.
 
@@ -36,10 +36,10 @@ ARGUMENT:: value
 A link::Classes/String:: that contains the text you wish to replace the key with.
 
 METHOD:: removeAt
-Remove the key and associated macro text from the MacroReplacer.
+Remove the key and associated macro text from the MacroExpander.
 
 code::
-m = MacroReplacer.new;
+m = MacroExpander.new;
 m.put(\owl, """
 (
 1 + 1
@@ -52,7 +52,7 @@ EXAMPLES::
 
 code::
 (
-m = MacroReplacer.new;
+m = MacroExpander.new;
 m.put(\owl, """
 (
 1 + 1

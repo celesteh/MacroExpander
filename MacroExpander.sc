@@ -1,4 +1,4 @@
-MacroReplacer : IdentityDictionary{
+MacroExpander : IdentityDictionary{
 
 	var doc;//, macros;
 
