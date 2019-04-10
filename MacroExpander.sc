@@ -8,12 +8,14 @@ MacroReplacer : IdentityDictionary{
 
 	init{|document, title|
 
+		var switch;
 		//macros = IdentityDictionary.new;
 
 		// This is for live coding. Accidents happen
-		if(doc.isKindOf(String) && title.isNil, {
+		if(doc.isKindOf(String) && (title.isNil || title.isKindOf(Document)), {
+			switch = title;
 			title = doc;
-			doc = nil;
+			doc = switch;
 		});
 
 		title.isNil.if({

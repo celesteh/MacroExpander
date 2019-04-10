@@ -1,0 +1,64 @@
+TITLE:: MacroReplacer
+summary:: Allows for Macro expansion in a Document in SuperCollider
+categories:: Live Coding
+related:: Classes/Document, Classes/ScIDE, Guides/SCIde
+
+DESCRIPTION::
+An extension of link::Classes/IdentityDictionary:: that allows the user to specify keys for macro expansion within a link::Classes/Document::. This can be within the IDE or in a separate window.
+
+CLASSMETHODS::
+
+METHOD:: new
+
+ARGUMENT:: document
+An existing instance of link::Classes/Document:: or nil to a create a new Document
+
+ARGUMENT:: title
+The title to use if a new instance of Document is created.
+
+discussion::
+code::
+MacroReplacer(Document.current); // cut and paste to a Document or
+MacroReplacer.new;
+::
+Because this is intended for LiveCoding, it is tolerant of arguments being in the wrong oder.
+
+INSTANCEMETHODS::
+private:: init
+
+METHOD:: put
+Add a key value pair.
+
+ARGUMENT:: key
+A link::Classes/Symbol:: that you will type in the Document to expand the associated code
+
+ARGUMENT:: value
+A link::Classes/String:: that contains the text you wish to replace the key with.
+
+METHOD:: removeAt
+Remove the key and associated macro text from the MacroReplacer.
+
+code::
+m = MacroReplacer.new;
+m.put(\owl, """
+(
+1 + 1
+)
+""");
+m.removeAt(\owl);
+::
+
+EXAMPLES::
+
+code::
+(
+m = MacroReplacer.new;
+m.put(\owl, """
+(
+1 + 1
+)
+""");
+
+)
+::
+Try typing 'owl' or '\owl' ion a line by itself in the new window and holding the alt key while tapping the down arrow key. It should replace the line with the code in the macro.

@@ -1,0 +1,9 @@
+(
+name: "MacroExpander",
+summary: "Allows for Macro expansion in a Document",
+version: "0.0.1",
+schelp: "MacroExapnder",
+url: "https://github.com/celesteh/MacroExpander",
+license: "GPL",
+copyright: "Charles Hutchins 2019"
+)
