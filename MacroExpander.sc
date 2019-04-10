@@ -3,24 +3,29 @@ MacroExpander : IdentityDictionary{
 	var doc;//, macros;
 
 	*new {|document, title|
-		^super.new.init(title);
+		^super.new.init(document, title);
 	}
 
 	init{|document, title|
 
 		var switch;
 		//macros = IdentityDictionary.new;
+		//doc.class.postln;
 
 		// This is for live coding. Accidents happen
-		if(doc.isKindOf(String) && (title.isNil || title.isKindOf(Document)), {
+		if(document.isKindOf(String) && (title.isNil || title.isKindOf(Document)), {
 			switch = title;
-			title = doc;
-			doc = switch;
+			title = document;
+			doc = title;
+		}, {
+			doc = document;
 		});
 
 		title.isNil.if({
 			title = "Live Code";
 		});
+
+		doc.class.postln;
 
 		doc.isNil.if({
 			doc = Document(title);
@@ -28,7 +33,7 @@ MacroExpander : IdentityDictionary{
 
 
 		doc. keyDownAction = {|doc, char, mod, unicode, keycode|
-			var code, altDown, offset, start, end, key, value;//, string;
+			var code, altDown, offset, start, end, key, value, size;//, string;
 
 			//[mod, keycode, unicode].postln;
 
@@ -76,6 +81,8 @@ MacroExpander : IdentityDictionary{
 							// it doesn't match because the \ isn't treated
 							// as a symbol marker but
 							// as a character within the key
+
+							size = code.size;
 
 							code.beginsWith("\\").if({
 								code.removeAt(0);
